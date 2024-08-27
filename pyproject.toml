@@ -12,7 +12,7 @@ nxtools = "^1.6"
 pydantic = "^1.10.2"
 psutil = "^5.9.2"
 python-dotenv = "^0.21.0"
-docker = "^6.0.0"
+docker = "^7.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0"

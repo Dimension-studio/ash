@@ -1,3 +1,4 @@
+include .env
 IMAGE_NAME=ynput/ayon-ash
 VERSION=$(shell python -c "import ash; print(ash.__version__, end='')")
 

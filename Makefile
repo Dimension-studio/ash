@@ -5,6 +5,7 @@ VERSION=$(shell python -c "import ash; print(ash.__version__, end='')")
 run: build
 	docker run \
 		-d --rm \
+		--name ayon-docker-ash \
 		--hostname ash_worker_01 \
 		-v $(shell pwd)/ash:/ash/ash \
 		-v /var/run/docker.sock:/var/run/docker.sock \

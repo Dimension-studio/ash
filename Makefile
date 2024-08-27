@@ -1,15 +1,17 @@
 include .env
-IMAGE_NAME=ynput/ayon-ash
+IMAGE_NAME=ghcr.io/dimension-studio/ayon-ash
 VERSION=$(shell python -c "import ash; print(ash.__version__, end='')")
 
 run: build
 	docker run \
 		-it --rm \
-		--hostname worker \
+		--hostname ash_worker_01 \
 		-v $(shell pwd)/ash:/ash/ash \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e AYON_API_KEY=${AYON_API_KEY} \
 		-e AYON_SERVER_URL=${AYON_SERVER_URL} \
+		-e GHCR_TOKEN=${GHCR_TOKEN} \
+		-e GHCR_USERNAME=${GHCR_USERNAME} \
 		--log-driver=syslog \
 		--log-opt syslog-address=udp://localhost:514 \
 		$(IMAGE_NAME):latest
@@ -24,5 +26,5 @@ build: check
 	docker build -t $(IMAGE_NAME):latest -t $(IMAGE_NAME):$(VERSION) .
 
 dist: build
-	docker push ynput/ayon-ash:$(VERSION)
-	docker push ynput/ayon-ash:latest
+	docker push ghcr.io/dimension-studio/ayon-ash:$(VERSION)
+	docker push ghcr.io/dimension-studio/ayon-ash:latest

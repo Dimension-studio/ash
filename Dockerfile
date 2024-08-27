@@ -26,4 +26,4 @@ RUN chmod +x /ash/entrypoint.sh
 # Set the entrypoint to our custom script
 ENTRYPOINT ["/ash/entrypoint.sh"]
 
-CMD ["python", "-m", "ash"]
+#CMD ["python", "-m", "ash"]

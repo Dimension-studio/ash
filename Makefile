@@ -7,8 +7,8 @@ run: build
 		--hostname worker \
 		-v $(shell pwd)/ash:/ash/ash \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-e AYON_API_KEY=veryinsecurapikey \
-		-e AYON_SERVER_URL=http://localhost:5000 \
+		-e AYON_API_KEY=${AYON_API_KEY} \
+		-e AYON_SERVER_URL=${AYON_SERVER_URL} \
 		--log-driver=syslog \
 		--log-opt syslog-address=udp://localhost:514 \
 		$(IMAGE_NAME):latest

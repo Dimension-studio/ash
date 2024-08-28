@@ -37,8 +37,8 @@ function defaultfunc {
 }
 
 function build {
-    & docker build -t "$IMAGE_FULL_NAME" .
-    & docker build -t "$IMAGE_NAME:latest" .
+    & docker build -t "$($IMAGE_NAME):latest" .
+    & docker build -t "$($IMAGE_FULL_NAME)" .
 }
 
 function clean {
@@ -48,8 +48,8 @@ function clean {
 function dist {
   build
   # Publish the docker image to the registry
-  docker tag $IMAGE_FULL_NAME "$IMAGE_FULL_NAME"
-  docker push "$IMAGE_FULL_NAME"
+  docker push "$($IMAGE_NAME):latest"
+  docker push "$($IMAGE_FULL_NAME)"
 }
 
 function load-env {
